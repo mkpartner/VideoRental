@@ -80,6 +80,9 @@ public class VRUI {
 		james.addRental(r1) ;
 		james.addRental(r2) ;
 
+		v1.setRented(true);
+		v2.setRented(true);
+
 		manager = new VRManager(customers, videos);
 	}
 
