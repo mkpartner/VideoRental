@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VRManager {
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public List<Video> getVideos() {
+        return videos;
+    }
+
     private List<Customer> customers = new ArrayList<Customer>() ;
 
     private List<Video> videos = new ArrayList<Video>() ;
@@ -35,6 +43,25 @@ public class VRManager {
         }
     }
 
+    public void doRentVideo(Customer foundCustomer, String videoTitle) {
+        Video foundVideo = null ;
+        for ( Video video: videos ) {
+            if ( video.getTitle().equals(videoTitle) && video.isRented() == false ) {
+                foundVideo = video ;
+                break ;
+            }
+        }
+
+        if ( foundVideo == null ) return;
+
+        Rental rental = new Rental(foundVideo) ;
+        foundVideo.setRented(true);
+
+        List<Rental> customerRentals = foundCustomer.getRentals() ;
+        customerRentals.add(rental);
+        foundCustomer.setRentals(customerRentals);
+    }
+
     public Customer findCustomer(String customerName) {
         Customer foundCustomer = null ;
         for ( Customer customer: customers ) {
@@ -43,7 +70,6 @@ public class VRManager {
                 break ;
             }
         }
-        if ( foundCustomer == null ) return null;
         return foundCustomer;
     }
 
