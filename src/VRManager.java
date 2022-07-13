@@ -1,9 +1,14 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VRManager {
+    private List<Customer> customers = new ArrayList<Customer>() ;
+
+    private List<Video> videos = new ArrayList<Video>() ;
+
     public List<Customer> getCustomers() {
         return customers;
     }
@@ -11,10 +16,6 @@ public class VRManager {
     public List<Video> getVideos() {
         return videos;
     }
-
-    private List<Customer> customers = new ArrayList<Customer>() ;
-
-    private List<Video> videos = new ArrayList<Video>() ;
     public VRManager(List<Customer> customers, List<Video> videos) {
         this.customers = customers;
         this.videos = videos;
@@ -60,6 +61,17 @@ public class VRManager {
         List<Rental> customerRentals = foundCustomer.getRentals() ;
         customerRentals.add(rental);
         foundCustomer.setRentals(customerRentals);
+    }
+
+    public void doRegisterVideo(String title, int videoType, int priceCode) {
+        Date registeredDate = new Date();
+        Video video = new Video(title, videoType, priceCode, registeredDate);
+        videos.add(video);
+    }
+
+    public void doRegisterCustomer(String name) {
+        Customer customer = new Customer(name) ;
+        customers.add(customer) ;
     }
 
     public Customer findCustomer(String customerName) {
