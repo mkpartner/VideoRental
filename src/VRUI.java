@@ -34,8 +34,7 @@ public class VRUI {
 	}
 
 	public void clearRentals() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = enterCustomerName();
 
 		Customer foundCustomer = manager.findCustomer(customerName);
 		if ( foundCustomer == null ) {
@@ -46,8 +45,7 @@ public class VRUI {
 	}
 
 	public void returnVideo() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = enterCustomerName();
 
 		Customer foundCustomer = manager.findCustomer(customerName);
 		if (foundCustomer == null) return;
@@ -56,6 +54,12 @@ public class VRUI {
 		String videoTitle = scanner.next() ;
 
 		manager.doReturnVideo(foundCustomer, videoTitle);
+	}
+
+	private String enterCustomerName() {
+		System.out.println("Enter customer name: ") ;
+		String customerName = scanner.next() ;
+		return customerName;
 	}
 
 
@@ -109,8 +113,7 @@ public class VRUI {
 	}
 
 	public void getCustomerReport() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = enterCustomerName();
 
 		Customer foundCustomer = manager.findCustomer(customerName);
 
@@ -123,8 +126,7 @@ public class VRUI {
 	}
 
 	public void rentVideo() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = enterCustomerName();
 
 		Customer foundCustomer = manager.findCustomer(customerName);
 		if (foundCustomer == null) return;
@@ -149,8 +151,7 @@ public class VRUI {
 	}
 
 	private void registerCustomer() {
-		System.out.println("Enter customer name: ");
-		String name = scanner.next();
+		String name = enterCustomerName();
 		manager.doRegisterCustomer(name);
 	}
 
