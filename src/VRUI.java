@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class VRUI {
 	private static Scanner scanner = new Scanner(System.in) ;
 
-	private static VRManager manager;
+	private static VRManager manager = new VRManager(new ArrayList<Customer>(), new ArrayList<Video>());;
 
 	public static void main(String[] args) {
 		VRUI ui = new VRUI() ;
