@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Date;
 
 public class Rental {
@@ -49,7 +51,7 @@ public class Rental {
 	public int getDaysRentedLimit() {
 		int limit = 0 ;
 		int daysRented ;
-		if (getStatus() == 1) { // returned Video
+		if (getStatus() == 1) { // returned src.Video
 			long diff = returnDate.getTime() - rentDate.getTime();
 			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		} else { // not yet returned
