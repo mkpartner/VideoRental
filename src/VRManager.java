@@ -22,13 +22,20 @@ public class VRManager {
     }
 
     public void doClearRentals(Customer foundCustomer) {
+        showCustomerRentals(foundCustomer);
+        setCustomerRentals(foundCustomer);
+    }
+
+    private void showCustomerRentals(Customer foundCustomer) {
         System.out.println("Name: " + foundCustomer.getName() +
                 "\tRentals: " + foundCustomer.getRentals().size()) ;
         for ( Rental rental: foundCustomer.getRentals() ) {
             System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
             System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
         }
+    }
 
+    private void setCustomerRentals(Customer foundCustomer) {
         List<Rental> rentals = new ArrayList<Rental>() ;
         foundCustomer.setRentals(rentals);
     }
